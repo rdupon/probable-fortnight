@@ -13,6 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check for secret
         run: |
+          find .
           if [ -z "${{ secrets.MY_SECRET }}" ]; then
             echo "Error: Secret MY_SECRET is empty!"
           fi
