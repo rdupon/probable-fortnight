@@ -18,4 +18,4 @@ jobs:
           fi
           echo "Secret found and not empty."
       - name: Call another workflow
-        uses: ./wc.yml
+        uses: ./.github/workflows/wc.yml
