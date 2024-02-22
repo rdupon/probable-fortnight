@@ -10,6 +10,7 @@ jobs:
   check_secret:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Check for secret
         run: |
           if [ -z "${{ secrets.MY_SECRET }}" ]; then
