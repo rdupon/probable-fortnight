@@ -18,5 +18,5 @@ jobs:
             echo "Error: Secret MY_SECRET is empty!"
           fi
           echo "Secret found and not empty."
-      - name: Call another workflow
-        uses: ./.github/workflows/wc.yml
+  wc:
+    uses: ./.github/workflows/wc.yml
