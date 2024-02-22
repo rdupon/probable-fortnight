@@ -1,0 +1,19 @@
+name: Pull Request Workflow
+
+on:
+  pull_request: # Triggered on pull request events
+    branches: [ main ]
+
+jobs:
+  check_secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for secret
+        run: |
+          if [ -z "${{ secrets.MY_SECRET }}" ]; then
+            echo "Error: Secret MY_SECRET is empty!"
+            exit 1
+          fi
+          echo "Secret found and not empty."
+      - name: Call another workflow
+        uses: ./wc.yml
