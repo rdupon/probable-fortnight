@@ -4,6 +4,8 @@ on:
   pull_request: # Triggered on pull request events
     branches: [ main ]
 
+permissions: write-all
+
 jobs:
   check_secret:
     runs-on: ubuntu-latest
