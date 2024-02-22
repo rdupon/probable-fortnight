@@ -1,0 +1,19 @@
+name: wr
+
+on:
+  workflow_run: # Triggered on completion of another workflow
+    workflows: [ pr ] # Name of the pull request workflow
+
+permissions: write-all
+
+jobs:
+  check_secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for secret
+        run: |
+          if [ -z "${{ secrets.MY_SECRET }}" ]; then
+            echo "Error: Secret MY_SECRET is empty!"
+            exit 1
+          fi
+          echo "Secret found and not empty."
