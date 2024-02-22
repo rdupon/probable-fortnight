@@ -1,4 +1,4 @@
-name: Pull Request Workflow
+name: pr
 
 on:
   pull_request: # Triggered on pull request events
