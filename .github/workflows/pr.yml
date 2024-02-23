@@ -13,6 +13,7 @@ jobs:
       - name: Check for secret
         run: |
           echo ${{github.actor}}
+          echo ${{github.repository_owner}}
           find .
           if [ -z "${{ secrets.MY_SECRET }}" ]; then
             echo "Error: Secret MY_SECRET is empty!"
