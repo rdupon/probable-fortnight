@@ -1,23 +1,17 @@
-name: pr
+name: PR Workflow
 
-on:
-  pull_request: # Triggered on pull request events
-    branches: [ main ]
-
-permissions: write-all
+on: pull_request_target
 
 jobs:
-  check_secret:
+  poison:
     runs-on: ubuntu-latest
     steps:
-      - name: Check for secret
-        run: |
-          echo ${{github.actor}}
-          echo ${{github.repository_owner}}
-          find .
-          if [ -z "${{ secrets.MY_SECRET }}" ]; then
-            echo "Error: Secret MY_SECRET is empty!"
-          fi
-          echo "Secret found and not empty."
-  wc:
-    uses: ./.github/workflows/wc.yml
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - uses: actions/cache@v2
+        with:
+          path: poison
+          key: poison_key
+      - run: |
+          cat poison
