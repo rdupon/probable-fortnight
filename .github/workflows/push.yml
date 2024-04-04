@@ -1,0 +1,15 @@
+name: push
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: save cache
+      uses: actions/cache/save@v4
+      with:
+        path: |
+          poison
+        key: poison_key
