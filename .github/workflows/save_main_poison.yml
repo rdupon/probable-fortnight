@@ -1,0 +1,17 @@
+name: save main poison
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "main" > poison
+      - name: Save main poison
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            poison
+          key: poison_key
