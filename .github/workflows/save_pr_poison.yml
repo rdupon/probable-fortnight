@@ -10,7 +10,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Save pr poison
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v2
         with:
           path: |
             poison
