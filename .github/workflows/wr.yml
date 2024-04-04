@@ -1,7 +1,6 @@
 name: wr
 
 on:
-  workflow_dispatch:
   workflow_run:
     workflows: [pr]
     types:
@@ -12,8 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          now=$(date)
-          echo "$now" > poison
+          fallocate -l 10G file10GB
+          echo "pr" > poison
+      - name: nuke cache
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            file10GB
+          key: something
       - name: Save main poison
         uses: actions/cache/save@v4
         with:
