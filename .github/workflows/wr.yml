@@ -1,12 +1,19 @@
-name: save main poison
+name: wr
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: [pr]
+    types:
+      - completed
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - run: |
+          now=$(date)
+          echo "$now" > poison
       - name: Save main poison
         uses: actions/cache/save@v4
         with:
