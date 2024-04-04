@@ -1,0 +1,14 @@
+name: display main poison
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/cache@v4
+        with:
+          path: poison
+          key: poison_key
+      - run: |
+          cat poison
